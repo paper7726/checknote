@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>行事曆</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="calendar">
+        <header>
+            <h1>行事曆</h1>
+        </header>
+        <div class="month">
+            <h2>十月 2024</h2>
+            <div class="days">
+                <div class="day">日</div>
+                <div class="day">一</div>
+                <div class="day">二</div>
+                <div class="day">三</div>
+                <div class="day">四</div>
+                <div class="day">五</div>
+                <div class="day">六</div>
+                
+                <div class="date" onclick="showInput(1)">1</div>
+                <div class="date" onclick="showInput(2)">2</div>
+                <div class="date" onclick="showInput(3)">3</div>
+                <div class="date" onclick="showInput(4)">4</div>
+                <div class="date" onclick="showInput(5)">5</div>
+                <div class="date" onclick="showInput(6)">6</div>
+                <div class="date" onclick="showInput(7)">7</div>
+                <div class="date" onclick="showInput(8)">8</div>
+                <div class="date" onclick="showInput(9)">9</div>
+                <div class="date" onclick="showInput(10)">10</div>
+                <div class="date" onclick="showInput(11)">11</div>
+                <div class="date" onclick="showInput(12)">12</div>
+                <div class="date" onclick="showInput(13)">13</div>
+                <div class="date" onclick="showInput(14)">14</div>
+                <div class="date" onclick="showInput(15)">15</div>
+                <div class="date" onclick="showInput(16)">16</div>
+                <div class="date" onclick="showInput(17)">17</div>
+                <div class="date" onclick="showInput(18)">18</div>
+                <div class="date" onclick="showInput(19)">19</div>
+                <div class="date" onclick="showInput(20)">20</div>
+                <div class="date" onclick="showInput(21)">21</div>
+                <div class="date" onclick="showInput(22)">22</div>
+                <div class="date" onclick="showInput(23)">23</div>
+                <div class="date" onclick="showInput(24)">24</div>
+                <div class="date" onclick="showInput(25)">25</div>
+                <div class="date" onclick="showInput(26)">26</div>
+                <div class="date" onclick="showInput(27)">27</div>
+                <div class="date" onclick="showInput(28)">28</div>
+                <div class="date" onclick="showInput(29)">29</div>
+                <div class="date" onclick="showInput(30)">30</div>
+                <div class="date" onclick="showInput(31)">31</div>
+            </div>
+        </div>
+        <div id="inputModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeInput()">&times;</span>
+                <h3 id="modalDate"></h3>
+                <textarea id="eventInput" placeholder="輸入事件..."></textarea>
+                <button onclick="saveEvent()">儲存事件</button>
+            </div>
+        </div>
+        <div id="events"></div>
+    </div>
+    
+    <script>
+        let selectedDate = '';
+
+        function showInput(date) {
+            selectedDate = date;
+            document.getElementById('modalDate').innerText = '日期: ' + date + '日';
+            document.getElementById('inputModal').style.display = 'block';
+        }
+
+        function closeInput() {
+            document.getElementById('inputModal').style.display = 'none';
+            document.getElementById('eventInput').value = '';
+        }
+
+        function saveEvent() {
+            const eventText = document.getElementById('eventInput').value;
+            const eventsDiv = document.getElementById('events');
+            const newEvent = document.createElement('div');
+            newEvent.innerText = `日期 ${selectedDate} 日: ${eventText}`;
+            eventsDiv.appendChild(newEvent);
+            closeInput();
+        }
+    </script>
+</body>
+</html>
